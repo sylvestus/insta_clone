@@ -1,0 +1,34 @@
+
+{%extends "base.html"%}
+{% load bootstrap3 %}
+{% load static %}
+
+{% block content %}
+<br><br>
+<div class="container">
+    <h3 class="text-center">Edit Profile</h3>
+    <hr>
+    <div class="row">
+        <div class="col-md-2"> </div>
+        <div class="col-md-7">
+
+            <div class="panel panel-default">
+
+                <div class="panel-body">
+                    <form method="POST">
+                        {% csrf_token %}
+                        {% bootstrap_form profile_update %}
+                        {% bootstrap_form user_update %}
+
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-info col-md-12" value="Post">
+                        </div>
+                        <input type="hidden" name="next" value="{{next}}">
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}
