@@ -1,0 +1,117 @@
+{%extends 'base.html'%} 
+{%load bootstrap3} 
+{% block content %} {{block.super}}
+<style>
+  .profilePhoto {
+      width: 150px;
+      height: 150px;
+    
+  }
+
+  .profilePhoto img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+  }
+</style>
+<div style="background-color: aliceblue" class="container-fluid">
+  <h1 class="text-center">Home</h1>
+
+   <div class="row">
+    <div class="col-md-8 col-sm-8 col-lg-8 col-xs-8"></div>
+    <div class="col-md-4 col-sm-4 col-lg-4 col-xs-4 profilePhoto ">
+      
+      <img style="background-color: black;" src="{{current_user.profile.profilePhoto.url}}" alt="">
+      User name: {{current_user.username}}<br>
+      First name: {{current_user.first_name}}<br>
+      Last name: {{current_user.last_name}}<br>
+      Email: {{current_user.email}}</span>
+      <a href="{% url 'showProfile' %}">checkout your profile</a></p>
+     
+      
+
+    </div>
+  </div>
+  
+  {% if images%} 
+  {% for image in images%}
+ 
+  <div class="row">
+    <div class="col-md-">
+      <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
+        <h3 class="text-center"> {{image.imageCaption}}</h3>
+        <a href="{% url 'morepic' id=image.id %}"><img 
+          style="width: 100%; height: 250px"
+          src="{{image.image.url}}"
+          alt=""
+          class="img-responsive"
+        /></a>
+        
+        <span>{{image.imageName}}</span>
+        <ul style="display: inline; list-style: none;">
+        <li>posted: {{image.date_posted|date:"M d, Y"}}</li>
+        <li>likes: {{image.likes}}  <button type="button" onclick="myFunction()"><id= class="fa fa-heart-o" id="demo" onclick="myFunction()">like</button></li>
+      
+        <li>following: {{image.follow}}</li>
+        <li><a href="{%url 'new_comment' image.id%}">make a comment</a></li>
+        <li><a href="{% url 'new_post'%}">new post</a></li>
+        <li><a href="{% url 'delete' image.id %}"><button class="btn btn-outline-danger">delete post</button></a></li>
+        <li><a href="{% url 'updateCaption' image.id %}"><button class="btn btn-outline-succes">update caption</button></a></li>
+         <!-- <li><a href="{% url 'showComments' image.imageName%}">Comments ttt</a></li> -->
+      </ul>
+        <span data-toggle="modal" data-target="#{{image.id}}" style="cursor: pointer;"> comments </span><br>
+        
+      
+        <div class="card">
+                <!-- Modal -->
+<div class="modal fade" id="{{image.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">user comments</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        {% if comments %}
+        {% for comment_item in comments%}
+       
+        <h5>{{comment_item.comment}}</h5>
+        <h5>{{comment_item.date_posted }}</h5>
+        <img src="{{image.comment_item.image_id.url}}" alt="">
+        <a href=""><button class="btn btn-outline-danger">delete comment</button></a>
+        
+        {% endfor%}
+        {%else%}
+        <p>you have no comments yet</p>
+        {%endif%}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% endfor%} {% else%}
+  <h3>you have no images</h3>
+  {%endif%}
+  <script>
+    var add = (function () {
+      var counter = 0;
+      return function () {return counter += 1;}
+    })();
+    
+    function myFunction(){
+      document.getElementById("demo").innerHTML = add();
+    }
+    </script>
+  {%endblock%}
+ 
+</div>
