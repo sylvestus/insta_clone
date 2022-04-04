@@ -1,0 +1,57 @@
+{%extends 'base.html'%} 
+{%load bootstrap3} 
+{% block content %} {{block.super}}
+<div style="background-color: aliceblue" class="container-fluid">
+  <h1 class="text-center">Detailed view</h1>
+{% if image%} 
+  <div class="row">
+    <div class="col-md-">
+      <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
+        <h3 class="text-center">{{image.imageCaption}}</h3>
+        <img
+          style="width: 100%; height: 250px"
+          src="{{image.image.url}}"
+          alt=""
+          class="img-responsive"
+        />
+        <h2 class="text-center">{{image.imageName}}</h2>
+        <ul style="list-style: none;">
+        <li>posted: {{image.date_posted}}</li>
+        <li>likes: {{image.likes}}</li>
+        <li><span data-toggle="modal" data-target="#{{image.id}}" style="cursor: pointer;" style="cursor: pointer;"> comments </span></li>
+       </ul>
+      <h3>Comments</h3>
+    {% if comments %}
+    {% for comment_item in comments%}
+
+    {{image.id}}
+    
+    <h5>{{comment_item.comment}}</h5>
+    <h5>{{comment_item.date_posted }}</h5>
+    <img src="{{image.comment_item.image_id.url}}" alt="">
+    
+    {% endfor%}
+    {%else%}
+    <p>you have no comments yet</p>
+    {%endif%}
+  
+ 
+    
+  </div>
+</div>
+</div>
+</div>
+    </div>
+  </div>
+</div>
+</div>
+
+       
+
+       
+  {% else%}
+  <h3>you have no images</h3>
+  {%endif%}
+  
+  {%endblock%}
+</div>
