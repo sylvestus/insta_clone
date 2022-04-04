@@ -1,0 +1,7 @@
+{%extends 'django_registration/base.html'%}
+{% block content %}
+{% load bootstrap3 %}
+<div class="alert alert-success" role="alert">
+<p  >successfully registered <a href="{% url 'landing_page'%}">go back home</a> </p>
+</div>
+{%endblock%}
