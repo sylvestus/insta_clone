@@ -1,0 +1,38 @@
+{%extends 'base.html'%}
+{% load bootstrap3 %}
+{% load static %}
+
+{% block content %}
+<br><br>
+<div class="container">
+    <h3 class="text-center">Create a new post</h3>
+    <hr>
+    <div class="row">
+        <div class="col-md-2"> </div>
+        <div class="col-md-7">
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="text-center">Post</h3>
+                </div>
+                <div class="panel-body">
+                    <form action="{%url 'new_post'%}" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {% bootstrap_form postForm %}
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-info col-md-12" value="Post">
+                        </div>
+                        <input type="hidden" name="next" value="{{next}}">
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}
+
+  
+
+  
+
