@@ -20,6 +20,7 @@ To user this simple python a application, first make sure you have met the recqu
 Then follow the following 2 steps:
 * **1** : Clone this repository using **`https://github.com/sylvestus/insta_clone.git`**, or downloading a ZIP file of the code. If you decide  to download it as a .zip file, you will have to extract files to your preferred location.
 * **2** : Open the terminal, go to the project directory and run the following commands: **`python3 manage.y run server`** and ** if it doest run make sure to set to production mode in the settings.py** 
+#login details: username:silvano36 password: 123456 same goes for the super user details
 ## User Stories
 * The user is able to;
 * View different photos that interest me.
