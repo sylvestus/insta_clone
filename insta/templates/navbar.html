@@ -8,62 +8,55 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
+  <style>
+    .list li{
+     list-style: none;
+     display: inline;
+     padding: 10px;
+    }
 
-<nav class="navbar navbar-inverse" >
-  <div class="container-fluid">
-  
-  <!-- BRAND -->
-  <div class="navbar-header">
-  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#alignment-example" aria-expanded="false">
-  <span class="sr-only">Toggle navigation</span>
-  <span class="icon-bar"></span>
-  <span class="icon-bar"></span>
-  <span class="icon-bar"></span>
-  </button>
-  <a class="navbar-brand"href="{% url 'landing_page' %}">Instagram</a>
-  </div>
-  
-  <!-- COLLAPSIBLE NAVBAR -->
-  <div class="collapse navbar-collapse" id="alignment-example">
-  
-  <!-- Links -->
-  <ul class="nav navbar-nav">
-  <!-- <li class="active"><a href="#">Link 1 <span class="sr-only">(current)</span></a></li>
-  <li><a href="#">Link 2</a></li>
-  <li><a href="#">Link 3</a></li> -->
-  </ul>
-  
-  <!-- Search (left) -->
-  <form class="navbar-form navbar-left" role="search" action="{% url 'searched' %}" >
-  <div class="form-group">
-  <input type="text" class="form-control" placeholder="Search per insta handle" name="instahandle">
-  </div>
-  <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
-  </form>
- 
-  
-  <!-- Link (right) -->
-  <ul class="nav navbar-nav navbar-right">
-  <li>{% if user.is_authenticated %}
-    <ul>
+  </style>
+<div class="container-fluid"><div class="row">
+  <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"> <a style="margin-left: 20%;" class="navbar-brand"href="{% url 'landing_page' %}">  <img src="../../media/media/instagram.png" alt=""></a> </div>
+  <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5"> <!-- Search (left) -->
+    <form class="navbar-form navbar-left" role="search" action="{% url 'searched' %}" >
+    <div class="form-group">
+    <input style="background-color: rgba(202, 199, 199, 0.685);" type="text" class="form-control" placeholder="Search per insta handle" name="instahandle">
+    <button type="submit" class="btn btn-default"><i  class="glyphicon glyphicon-search"></i></button>
+    </div>
+    </form></div>
+  <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+     <!-- Link (right) -->
+  <ul class="list">
+    <li>{% if user.is_authenticated %}
+      <ul>
+        <li>
+          <li><i  class="glyphicon glyphicon-home"></i>
+        </li>
+        <li>
+          <i  class="glyphicon glyphicon-envelope"></i></li>
+        <li>
+          
+          <i  class="glyphicon glyphicon-plus"></i>
+        </li>
+        <li class="glyphicon glyphicon-heart"></i> 
+        </li>
+          <a style="color: black;" href="/logout">Logout</a>
+        </li>
+
+      </ul>
+      {% else %}
       <li>
-          <br>  <a style="color: white;" href="/logout">Logout</a>
+        
+        <a class='btn btn-default' href="/accounts/login">Login</a>
       </li>
+    
+      {% endif %}</li>
     </ul>
-    {% else %}
-    <li>
-      <a class='btn btn-default' href="/accounts/login">Login</a>
-    </li>
-  
-    {% endif %}</li>
-  </ul>
-  
+    
   </div>
-  
-  </div>
-  </nav>
 
-
+</div></div>
 </body>
 </html>
 
