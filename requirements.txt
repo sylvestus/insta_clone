@@ -4,7 +4,6 @@ black==22.3.0
 click==8.1.2
 config==0.5.1
 confusable-homoglyphs==3.2.0
-decouple==0.0.7
 dj-database-url==0.5.0
 Django==4.0.3
 django-bootstrap==0.2.4
