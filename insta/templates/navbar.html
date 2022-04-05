@@ -14,18 +14,7 @@
       <a class="navbar-brand" href="{% url 'landing_page' %}">Instagram</a>
     </div>
     <div class="col-sm-6 col-md-6">
-      {% if user.is_authenticated %}
-      <ul>
-        <li>
-            <br>  <a style="color: white;" href="/logout">Logout</a>
-        </li>
-      </ul>
-      {% else %}
-      <li>
-        <a class='btn btn-default' href="/accounts/login">Login</a>
-      </li>
     
-      {% endif %}
     </div>
      <!-- Adding a search form  -->
      <div class="col-sm-4 col-md-4 navbar-right">
@@ -40,8 +29,19 @@
         </div>
 
       </form>
+      {% if user.is_authenticated %}
+      <ul>
+        <li>
+            <br>  <a style="color: white;" href="/logout">Logout</a>
+        </li>
+      </ul>
+      {% else %}
+      <li>
+        <a class='btn btn-default' href="/accounts/login">Login</a>
+      </li>
+    
+      {% endif %}
      </div>
-
 
   </div>
 </nav>
