@@ -29,20 +29,20 @@
         </div>
 
       </form>
-      {% if user.is_authenticated %}
-      <ul>
-        <li>
-            <br>  <a style="color: white;" href="/logout">Logout</a>
-        </li>
-      </ul>
-      {% else %}
-      <li>
-        <a class='btn btn-default' href="/accounts/login">Login</a>
-      </li>
-    
-      {% endif %}
+     
      </div>
-
+     {% if user.is_authenticated %}
+     <ul>
+       <li>
+           <br>  <a style="color: white;" href="/logout">Logout</a>
+       </li>
+     </ul>
+     {% else %}
+     <li>
+       <a class='btn btn-default' href="/accounts/login">Login</a>
+     </li>
+   
+     {% endif %}
   </div>
 </nav>
 </body>
